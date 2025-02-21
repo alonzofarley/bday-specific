@@ -1,4 +1,4 @@
-import { redirect, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import styles from "@/styles/Home.module.css";
 
 export default function FirstPage() {

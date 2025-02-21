@@ -1,4 +1,4 @@
-import { redirect, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import styles from "@/styles/Home.module.css";
 import { useState } from "react";
 
@@ -18,7 +18,7 @@ type State = {
     "D2": string
 }
 
-let answerState: State = {
+const answerState: State = {
     "A1": "2", 
     "A2": "7", 
     "A3": "5", 
@@ -35,7 +35,7 @@ let answerState: State = {
 export default function CodePage() {
     const router = useRouter();
 
-    let [state, setState] = useState({"A1": "", 
+    const [state, setState] = useState({"A1": "", 
     "A2": "", 
     "A3": "", 
     "B1": "", 
@@ -48,12 +48,12 @@ export default function CodePage() {
     "D2": ""
 } as State);
 
-let changedState = (stateItem: string) => (e: any) => {
-    let newState = {...state, [stateItem]: e.target.value.trim()}
+const changedState = (stateItem: string) => (e: any) => {
+    const newState = {...state, [stateItem]: e.target.value.trim()}
     console.log(newState);
 
-    let isEqual = Object.keys(answerState).every(key => {
-        let k = key as keyof State;
+    const isEqual = Object.keys(answerState).every(key => {
+        const k = key as keyof State;
         return answerState[k] == newState[k];
     })
     console.log(newState, answerState)
